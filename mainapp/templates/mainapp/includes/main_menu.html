@@ -1,0 +1,50 @@
+<div class="header clearfixes">
+    {#    <h4>{{ request.resolver_match }}</h4>#}
+    <a href="{% url 'main:index' %}" class="logo"></a>
+    <ul class="top-menu">
+        <li>
+            <a href="{% url 'main:index' %}"
+               class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+                главная
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'main:products' %}"
+               class="{% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'category' %}active{% endif %}">
+                товары
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'main:contact' %}"
+               class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                контакты
+            </a>
+        </li>
+        {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'auth:edit' %}">
+                    {{ user.username|default:"пользователь"|capfirst }}
+                </a>
+            </li>
+        {% endif %}
+        {% if user.is_superuser %}
+            <li>
+                <a href="{% url 'my_admin:index' %}">
+                    Админка
+                </a>
+            </li>
+        {% endif %}
+        <a href="{% url 'orders:list' %}">заказы</a>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'auth:logout' %}">выйти</a></li>
+        {% else %}
+            <li><a href="{% url 'auth:login' %}">войти</a></li>
+        {% endif %}
+    </ul>
+    <a href="#" class="scan"></a>
+    <a href="{% url 'basket:index' %}" class="basket">
+        {% if user.is_authenticated %}
+            <span>{{ user.basket_price|floatformat:0 }} руб ({{ user.basket_quantity }} шт)</span>
+        {% endif %}
+    </a>
+</div>

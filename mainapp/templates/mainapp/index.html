@@ -1,0 +1,48 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block box %}
+    <div class="top">
+        {% include 'mainapp/includes/main_menu.html' %}
+        <div class="top-text-slider">
+            <h1>{{ date_val|date:"Y-m-d" }} </h1>
+            <h3 class="green">всякие</h3>
+            <h3 class="big"> стульчики</h3>
+            <p>Удобные, комфортные.</p>
+            <a href="#" class="top-order">заказать <img src="{% static 'img/arrow.png' %}" alt=""></a>
+        </div>
+        <div class="navigation">
+            <a href="#"></a><a href="#"></a><a href="#"></a>
+        </div>
+    </div>
+
+    <div class="body_">
+        <div class="body-menu">
+            <a class="active" href="#">Популярные</a><a href="#">Новинки</a>
+        </div>
+        <a class="explore" href="#">показать все <img src="{% static 'img/arrow.png' %}" alt=""></a>
+        <div class="clearfixes">
+        </div>
+        <div class="tab-content">
+            <div class="block">
+                <a href="#"><img src="{% static 'img/product-1.jpg' %}" alt="">
+                    <div class="text">
+                        <img src="{% static 'img/icon-hover.png' %}" alt="img">
+                        <h4>Отличный стул</h4>
+                        <p>Расположитесь комфортно. </p>
+                    </div>
+                </a>
+            </div>
+            <div class="block">
+                <a href="#"><img src="{% static 'img/product-2.jpg' %}" alt="">
+                    <div class="text">
+                        <img src="{% static 'img/icon-hover.png' %}" alt="">
+                        <h4>Стул повышенного качества</h4>
+                        <p>Не оторваться. </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block box %}
+    <div class="hero">
+        {% include 'mainapp/includes/main_menu.html' %}
+        <h1>наши контакты</h1>
+    </div>
+
+    <div class="location">
+        {% for item in contacts %}
+            <div class="location-1">
+                <i class="fa fa-map-marker fa-5x"></i>
+                <h4>{{ item.city }}</h4>
+                <div class="contacts">
+                    <h5>Телефон</h5>
+                    <p>{{ item.phone }}</p>
+                </div>
+                <div class="contacts">
+                    <h5>Email</h5>
+                    <p>{{ item.email }}</p>
+                </div>
+                <div class="contacts">
+                    <h5>Адрес</h5>
+                    <p>{{ item.addres }}</p>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
